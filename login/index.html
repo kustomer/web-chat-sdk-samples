@@ -1,0 +1,46 @@
+<!-- Before running this file, make sure to replace INSERT_API_KEY with your own API Key -->
+<!-- Instructions on how to get an API Key can be found here: -->
+<!-- https://developer.kustomer.com/chat-sdk/v2.0-Web/docs/requirements#generate-a-kustomer-api-key -->
+
+<html>
+  <head>
+    <title>J's Bagels</title>
+  </head>
+  <body>
+    <h1>Welcome to J's Bagels</h1>
+    <p id="loggedInStatus">You are logged out.</p>
+    <button id="loginButton" disabled>Log in as Amy</button>
+    <button id="logoutButton">Log out</button>
+
+    <script src="https://cdn.kustomerapp.com/chat-web/widget.js" data-kustomer-api-key='INSERT_API_KEY'></script>
+    <script>
+      const loggedInStatus = document.getElementById('loggedInStatus');
+      const loginButton = document.getElementById('loginButton');
+      const logoutButton = document.getElementById('logoutButton');
+
+      Kustomer.start({}, function () {
+        loginButton.disabled = false;
+      });
+
+      loginButton.addEventListener('click', function() {
+        fetch('/login', { method: 'POST' })
+        .then(res => res.json())
+        .then(response => {
+
+          // note that you should only run Kustomer.login after Kustomer.start has finished
+          // which is why the Login Button is disabled until Kustomer.start's callback runs
+          Kustomer.login({
+            jwtToken: response.kustomerLoginJwtToken
+          });
+
+          loggedInStatus.innerText = 'You are logged in as Amy. Welcome back!';
+        });
+      });
+
+      logoutButton.addEventListener('click', function() {
+        Kustomer.logout();
+        loggedInStatus.innerText = 'You are logged out.'
+      });
+    </script>
+  </body>
+</html>

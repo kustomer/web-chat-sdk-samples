@@ -1,0 +1,15 @@
+{
+  "name": "chat-sample-login",
+  "version": "1.0.0",
+  "description": "Example app that shows how to implement authentication and Kustomer.login",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "John Chen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
