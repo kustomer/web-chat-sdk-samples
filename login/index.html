@@ -10,7 +10,7 @@
     <h1>Welcome to J's Bagels</h1>
     <p id="loggedInStatus">You are logged out.</p>
     <button id="loginButton" disabled>Log in as Amy</button>
-    <button id="logoutButton">Log out</button>
+    <button id="logoutButton" disabled>Log out</button>
 
     <script src="https://cdn.kustomerapp.com/chat-web/widget.js" data-kustomer-api-key='INSERT_API_KEY'></script>
     <script>
@@ -31,15 +31,24 @@
           // which is why the Login Button is disabled until Kustomer.start's callback runs
           Kustomer.login({
             jwtToken: response.kustomerLoginJwtToken
+          }, function (response, error) {
+            if (!error) {
+              loggedInStatus.innerText = 'You are logged in as Amy. Welcome back!';
+              loginButton.disabled = true;
+              logoutButton.disabled = false;
+            }
           });
-
-          loggedInStatus.innerText = 'You are logged in as Amy. Welcome back!';
         });
       });
 
       logoutButton.addEventListener('click', function() {
-        Kustomer.logout();
-        loggedInStatus.innerText = 'You are logged out.'
+        Kustomer.logout(function(response, error) {
+          if (!error) {
+            loggedInStatus.innerText = 'You are logged out.';
+            logoutButton.disabled = true;
+            loginButton.disabled = false;
+          }
+        });
       });
     </script>
   </body>

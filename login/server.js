@@ -8,20 +8,13 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 
-const MOCK_DATABASE = {
-  users: [
-    { id: 'uuid1', name: 'Amy', email: 'amy@amy.com' },
-    { id: 'uuid2', name: 'Barry', email: 'barry@barry.com' },
-  ],
-};
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 app.post('/login', (req, res) => {
   // let's say just for this example that Amy is logging in
-  const userFromDB = MOCK_DATABASE.users[0];
+  const userFromDB = { id: 'uuid1', name: 'Amy', email: 'amy@amy.com' };
 
   var kustomerLoginJwtToken = jwt.sign(
     {
