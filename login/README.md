@@ -2,9 +2,6 @@
 
 This is a barebones app showing how to implement our Web Chat SDK behind authentication using Kustomer.login.
 
-![screely-1625772133647](https://user-images.githubusercontent.com/14043427/124979176-b8347700-e000-11eb-91c7-b0c78095c1cd.png)
-
-
 ## Requirements
 
 - in `index.html` replace `INSERT_API_KEY` with your own Kustomer API Key with the `org.tracking` permissions
@@ -20,6 +17,8 @@ yarn start
 ```
 
 Open `localhost:3000` in your browser
+
+![screely-1625772133647](https://user-images.githubusercontent.com/14043427/124979176-b8347700-e000-11eb-91c7-b0c78095c1cd.png)
 
 ## Documentation
 
