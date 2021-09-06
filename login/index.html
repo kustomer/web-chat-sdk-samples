@@ -9,6 +9,7 @@
   <body>
     <h1>Welcome to J's Bagels</h1>
     <p id="loggedInStatus">You are logged out.</p>
+    <p id="loggedInStatusCheck"></p>
     <button id="loginButton" disabled>Log in as Amy</button>
     <button id="logoutButton" disabled>Log out</button>
     <button id="checkIsLoggedIn">Check Is Logged In</button>
@@ -16,6 +17,7 @@
     <script src="https://cdn.kustomerapp.com/chat-web/widget.js" data-kustomer-api-key='INSERT_API_KEY'></script>
     <script>
       const loggedInStatus = document.getElementById('loggedInStatus');
+      const loggedInStatusCheck = document.getElementById('loggedInStatusCheck');
       const loginButton = document.getElementById('loginButton');
       const logoutButton = document.getElementById('logoutButton');
       const checkIsLoggedInButton = document.getElementById('checkIsLoggedIn');
@@ -59,7 +61,7 @@
         Kustomer.isLoggedIn({ email }, function(response, error) {
           if (!error) {
             const message = response ? 'logged in' : 'logged out'
-            loggedInStatus.innerText = 'Login check: ' + message;
+            loggedInStatusCheck.innerText = 'Login check: ' + message;
           }
         });
       });
