@@ -9,11 +9,7 @@
   "author": "John Chen",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "express": "^4.21.2",
-=======
-    "express": "^4.20.0",
->>>>>>> e35429a4696ac172415092089697a4a14a68113b
     "jsonwebtoken": "^9.0.0"
   }
 }
